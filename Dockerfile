@@ -1,4 +1,3 @@
-# Imagen base
 FROM python:3.9-slim
 
 # Directorio de trabajo

@@ -122,7 +122,7 @@ function App() {
       const formData = new FormData();
       formData.append('file', file);
 
-      // TODO: Reemplazar con tu endpoint de backend
+      // TODO
       const response = await fetch(`${API_URL}/analyze`, {
         method: 'POST',
         body: formData,
