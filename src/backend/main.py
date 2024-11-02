@@ -4,13 +4,16 @@ import pandas as pd
 import numpy as np
 from typing import Dict, List, Union, Optional
 import io
+import os
 
-app = FastAPI()
+app = FastAPI(title="Data Quality API")
 
-# Configurar CORS
+#prod
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -26,7 +29,6 @@ def calculate_column_stats(df: pd.DataFrame, column: str) -> Dict:
         "uniqueCount": int(series.nunique())
     }
     
-    # Estadísticas adicionales para columnas numéricas
     if pd.api.types.is_numeric_dtype(series):
         stats.update({
             "min": float(series.min()) if not pd.isna(series.min()) else None,
@@ -45,7 +47,7 @@ def analyze_dataset(df: pd.DataFrame) -> Dict:
     total_rows = len(df)
     total_columns = len(df.columns)
     
-    # Análisis de valores nulos
+    #NULLS
     null_values = []
     for column in df.columns:
         null_count = df[column].isnull().sum()
@@ -56,7 +58,7 @@ def analyze_dataset(df: pd.DataFrame) -> Dict:
                 "percentage": round((null_count / total_rows) * 100, 2)
             })
     
-    # Análisis de tipos de datos
+    #DATA TYPES
     data_types = []
     for column in df.columns:
         invalid_count = 0
@@ -75,7 +77,7 @@ def analyze_dataset(df: pd.DataFrame) -> Dict:
             "invalidCount": invalid_count
         })
     
-    # Análisis de outliers
+    #OUTLIERS
     outliers = []
     for column in df.select_dtypes(include=[np.number]).columns:
         Q1 = df[column].quantile(0.25)
@@ -91,7 +93,7 @@ def analyze_dataset(df: pd.DataFrame) -> Dict:
                 "values": outlier_values.tolist()
             })
     
-    # Calcular métricas de calidad
+    # QUALITY METRICS
     total_cells = total_rows * total_columns
     null_cells = sum(nv["count"] for nv in null_values)
     duplicate_rows = df.duplicated().sum()
@@ -101,7 +103,7 @@ def analyze_dataset(df: pd.DataFrame) -> Dict:
     accuracy = 1 - (sum(dt["invalidCount"] for dt in data_types) / total_cells)
     overall = (completeness + consistency + accuracy) / 3
     
-    # Estadísticas por columna
+    # COLUMN STATS
     column_stats = [calculate_column_stats(df, column) for column in df.columns]
     
     return {
@@ -127,7 +129,7 @@ async def analyze_file(file: UploadFile = File(...)):
     try:
         content = await file.read()
         
-        # Detectar formato y leer archivo
+        # DETECT FORMAT AND READ FILE
         if file.filename.endswith('.csv'):
             df = pd.read_csv(io.StringIO(content.decode('utf-8')))
         elif file.filename.endswith(('.xlsx', '.xls')):
@@ -140,7 +142,7 @@ async def analyze_file(file: UploadFile = File(...)):
                 detail="Formato no soportado. Use CSV, Excel o JSON"
             )
         
-        # Analizar dataset
+        # ANALYZE DATASET
         result = analyze_dataset(df)
         return result
         

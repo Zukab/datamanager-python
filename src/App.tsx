@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { DatasetStats, DataQualityScore, ColumnStats } from '@/lib/types';
 import { Database } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { API_URL } from '@/config';
 
 // Datos de ejemplo
 const sampleStats: DatasetStats = {
@@ -122,7 +123,7 @@ function App() {
       formData.append('file', file);
 
       // TODO: Reemplazar con tu endpoint de backend
-      const response = await fetch('http://localhost:8000/analyze', {
+      const response = await fetch(`${API_URL}/analyze`, {
         method: 'POST',
         body: formData,
       });

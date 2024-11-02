@@ -8,14 +8,14 @@ def calculate_quality_metrics(df: pd.DataFrame) -> Dict:
     total_cells = df.size
     null_cells = df.isnull().sum().sum()
     
-    # Completitud: Porcentaje de datos no nulos
+    # NO NULLS  
     completeness = 1 - (null_cells / total_cells)
     
-    # Consistencia: Basada en duplicados y tipos de datos
+    # DUPLICATES
     duplicate_rows = df.duplicated().sum()
     consistency = 1 - (duplicate_rows / len(df))
     
-    # Precisión: Detección de outliers en columnas numéricas
+    # OUTLIERS
     accuracy = 0
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(numeric_cols) > 0:
@@ -28,7 +28,7 @@ def calculate_quality_metrics(df: pd.DataFrame) -> Dict:
             outliers_score.append(1 - (outliers / len(df)))
         accuracy = np.mean(outliers_score)
     
-    # Calidad general
+
     overall = np.mean([completeness, consistency, accuracy])
     
     return {
@@ -47,7 +47,6 @@ def analyze_column(series: pd.Series) -> Dict:
         "uniqueCount": int(series.nunique()),
     }
     
-    # Estadísticas adicionales para columnas numéricas
     if pd.api.types.is_numeric_dtype(series):
         stats.update({
             "min": float(series.min()) if not pd.isna(series.min()) else None,
@@ -80,11 +79,8 @@ def detect_outliers(df: pd.DataFrame) -> List[Dict]:
 
 def analyze_dataset(df: pd.DataFrame) -> Dict:
     """Análisis completo del dataset."""
-    # Estadísticas básicas
     total_rows = len(df)
     total_columns = len(df.columns)
-    
-    # Análisis de valores nulos
     null_values = []
     for column in df.columns:
         null_count = df[column].isnull().sum()
@@ -94,8 +90,6 @@ def analyze_dataset(df: pd.DataFrame) -> Dict:
                 "count": int(null_count),
                 "percentage": round((null_count / total_rows) * 100, 2)
             })
-    
-    # Análisis de tipos de datos
     data_types = []
     for column in df.columns:
         invalid_count = 0
