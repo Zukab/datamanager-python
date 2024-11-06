@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: data-quality-api
+    env: docker
+    plan: free
+    buildCommand: docker build -t data-quality-api .
+    startCommand: docker run -p $PORT:8000 data-quality-api
+    envVars:
+      - key: CORS_ORIGINS
+        value: https://tu-app-frontend.vercel.app
