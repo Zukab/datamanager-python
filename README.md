@@ -1,28 +1,28 @@
 ```markdown
 # Data Quality Dashboard
 
-Una aplicación web moderna para analizar la calidad de datos en archivos CSV, Excel y JSON. Proporciona métricas detalladas sobre la completitud, consistencia y precisión de los datos.
+A modern web application to analyze data quality in CSV, Excel, and JSON files. It provides detailed metrics on completeness, consistency, and accuracy of the data.
 
-## 🚀 Características
+## 🚀 Features
 
-- **Análisis Completo de Datos**
-  - Detección de valores nulos y duplicados
-  - Identificación de outliers
-  - Estadísticas por columna
-  - Métricas de calidad global
+- **Comprehensive Data Analysis**
+  - Detection of null and duplicate values
+  - Identification of outliers
+  - Column statistics
+  - Global quality metrics
 
-- **Soporte Multi-formato**
+- **Multi-format Support**
   - CSV
   - Excel (.xlsx, .xls)
   - JSON
 
-- **Métricas de Calidad**
-  - Completitud
-  - Consistencia
-  - Precisión
-  - Puntuación global
+- **Quality Metrics**
+  - Completeness
+  - Consistency
+  - Accuracy
+  - Overall score
 
-## 🛠️ Tecnologías
+## 🛠️ Technologies
 
 ### Frontend
 - React + TypeScript
@@ -36,23 +36,23 @@ Una aplicación web moderna para analizar la calidad de datos en archivos CSV, E
 - NumPy
 - Docker
 
-## 📊 Ejemplo de Uso
+## 📊 Example Usage
 
-1. Accede a la aplicación.
-2. Sube tu archivo de datos (CSV, Excel o JSON).
-3. Obtén un análisis detallado con:
-   - Estadísticas generales
-   - Detección de anomalías
-   - Visualización de datos
+1. Access the application.
+2. Upload your data file (CSV, Excel, or JSON).
+3. Get a detailed analysis with:
+   - General statistics
+   - Anomaly detection
+   - Data visualization
 
-## 🚀 Inicio Rápido
+## 🚀 Quick Start
 
-### Requisitos Previos
+### Prerequisites
 - Node.js (v18+)
 - Python (3.9+)
 - Docker
 
-### Instalación
+### Installation
 
 1. **Frontend**
 ```bash
@@ -76,10 +76,10 @@ docker-compose up --build
 ## 📝 API Endpoints
 
 ### POST /analyze
-Analiza un archivo y retorna métricas detalladas.
+Analyzes a file and returns detailed metrics.
 
 ```python
-# Ejemplo de respuesta
+# Example response
 {
   "stats": {
     "totalRows": 1000,
@@ -99,59 +99,59 @@ Analiza un archivo y retorna métricas detalladas.
 }
 ```
 
-## 🤝 Contribuir
+## 🤝 Contributing
 
-1. Fork el proyecto.
-2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`).
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`).
-4. Push a la rama (`git push origin feature/AmazingFeature`).
-5. Abre un Pull Request.
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
-# Estructura del Proyecto
+# Project Structure
 
 📦 Data-Quality-Dashboard  
   📂 src  
     📂 backend  
-      📜 main.py            # API endpoints y lógica principal  
-      📜 utils.py           # Funciones de utilidad para análisis  
+      📜 main.py            # API endpoints and core logic  
+      📜 utils.py           # Utility functions for analysis  
       📜 __init__.py  
     📂 components  
-      📜 data-quality-dashboard.tsx  # Componente principal del dashboard  
-      📜 file-upload.tsx            # Componente de carga de archivos  
-      📜 ui/                        # Componentes UI reutilizables  
-    📜 App.tsx              # Componente raíz de React  
-    📜 main.tsx            # Punto de entrada de React  
-    📜 config.ts           # Configuración de la aplicación  
-  📜 .env                  # Variables de entorno  
-  📜 .gitignore           # Archivos ignorados por git  
-  📜 docker-compose.yml   # Configuración de Docker  
-  📜 Dockerfile           # Configuración de imagen Docker  
-  📜 package.json         # Dependencias de Node.js  
-  📜 requirements.txt     # Dependencias de Python  
-  📜 README.md            # Documentación del proyecto  
+      📜 data-quality-dashboard.tsx  # Main dashboard component  
+      📜 file-upload.tsx            # File upload component  
+      📜 ui/                        # Reusable UI components  
+    📜 App.tsx              # Main React component  
+    📜 main.tsx            # React entry point  
+    📜 config.ts           # Application configuration  
+  📜 .env                  # Environment variables  
+  📜 .gitignore           # Files ignored by git  
+  📜 docker-compose.yml   # Docker configuration  
+  📜 Dockerfile           # Docker image build configuration  
+  📜 package.json         # Node.js dependencies  
+  📜 requirements.txt     # Python dependencies  
+  📜 README.md            # Project documentation  
 
-### Descripción de los Componentes Principales:
+### Description of Main Components:
 
 1. **Backend (`/src/backend/`)**:
-   - `main.py`: API FastAPI con endpoints para análisis de datos
-   - `utils.py`: Funciones de análisis estadístico y procesamiento
+   - `main.py`: FastAPI API with endpoints for data analysis
+   - `utils.py`: Statistical analysis and processing functions
 
 2. **Frontend (`/src/`)**:
-   - `components/`: Componentes React reutilizables
-   - `App.tsx`: Lógica principal de la aplicación
-   - `config.ts`: Configuración y variables de entorno
+   - `components/`: Reusable React components
+   - `App.tsx`: Main application logic
+   - `config.ts`: Configuration and environment variables
 
-3. **Configuración**:
-   - `docker-compose.yml`: Orquestación de servicios
-   - `Dockerfile`: Construcción de imagen Docker
-   - `requirements.txt`: Dependencias Python
-   - `package.json`: Dependencias Node.js
+3. **Configuration**:
+   - `docker-compose.yml`: Service orchestration
+   - `Dockerfile`: Docker image build configuration
+   - `requirements.txt`: Python dependencies
+   - `package.json`: Node.js dependencies
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## 👤 Autor
+## 👤 Author
 
 Sebastian Quintero  
 - GitHub: [@Zukab](https://github.com/Zukab/)  
