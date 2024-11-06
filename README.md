@@ -109,25 +109,25 @@ Analiza un archivo y retorna métricas detalladas.
 # Estructura del Proyecto
 
 📦 Data-Quality-Dashboard
-┣ 📂 src
-┃ ┣ 📂 backend
-┃ ┃ ┣ 📜 main.py            # API endpoints y lógica principal
-┃ ┃ ┣ 📜 utils.py           # Funciones de utilidad para análisis
-┃ ┃ ┗ 📜 __init__.py
-┃ ┣ 📂 components
-┃ ┃ ┣ 📜 data-quality-dashboard.tsx  # Componente principal del dashboard
-┃ ┃ ┣ 📜 file-upload.tsx            # Componente de carga de archivos
-┃ ┃ ┗ 📜 ui/                        # Componentes UI reutilizables
-┃ ┣ 📜 App.tsx              # Componente raíz de React
-┃ ┣ 📜 main.tsx            # Punto de entrada de React
-┃ ┗ 📜 config.ts           # Configuración de la aplicación
-┣ 📜 .env                  # Variables de entorno
-┣ 📜 .gitignore           # Archivos ignorados por git
-┣ 📜 docker-compose.yml   # Configuración de Docker
-┣ 📜 Dockerfile          # Configuración de imagen Docker
-┣ 📜 package.json        # Dependencias de Node.js
-┣ 📜 requirements.txt    # Dependencias de Python
-┗ 📜 README.md           # Documentación del proyecto
+  📂 src
+    📂 backend
+      📜 main.py            # API endpoints y lógica principal
+      📜 utils.py           # Funciones de utilidad para análisis
+      📜 __init__.py
+    📂 components
+      📜 data-quality-dashboard.tsx  # Componente principal del dashboard
+      📜 file-upload.tsx            # Componente de carga de archivos
+      📜 ui/                        # Componentes UI reutilizables
+    📜 App.tsx              # Componente raíz de React
+    📜 main.tsx            # Punto de entrada de React
+    📜 config.ts           # Configuración de la aplicación
+  📜 .env                  # Variables de entorno
+  📜 .gitignore           # Archivos ignorados por git
+  📜 docker-compose.yml   # Configuración de Docker
+  📜 Dockerfile          # Configuración de imagen Docker
+  📜 package.json        # Dependencias de Node.js
+  📜 requirements.txt    # Dependencias de Python
+  📜 README.md           # Documentación del proyecto
 
 ### Descripción de los Componentes Principales:
 
